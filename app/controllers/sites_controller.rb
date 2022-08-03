@@ -2,7 +2,7 @@ class SitesController < ApplicationController
   include SitesHelper
   include Pagy::Backend
 
-  before_action :set_site , except: [:new, :index]
+  before_action :set_site , except: [:new, :indexو :create]
   has_scope :order_by_last_visit
   has_scope :past_15, type: :boolean
   has_scope :past_30, type: :boolean
@@ -13,7 +13,7 @@ class SitesController < ApplicationController
   has_scope :last_visit_between, using: %i[start_date end_date], type: :hash
   has_scope :name_match
   has_scope :address_match
-  
+
   rescue_from Pagy::OverflowError, with: :overflow_paginations
 
   def index
@@ -72,7 +72,7 @@ class SitesController < ApplicationController
 
   def set_site
     @site = Site.find_by(id: params[:id])
-    redirect_to root_path, notice: 'الموقع المطلوب غير موجود' unless @site
+    redirect_to root_path, alert: 'الموقع المطلوب غير موجود' unless @site
   end
 
   def overflow_paginations
