@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :sites
   post "sites/submit_visit" => "sites#submit_visit"
 
-  get "search" => "search#index"
+  get "search" => "search#index", as: :search
 
 end

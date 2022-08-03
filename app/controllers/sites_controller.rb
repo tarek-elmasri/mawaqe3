@@ -17,7 +17,7 @@ class SitesController < ApplicationController
   rescue_from Pagy::OverflowError, with: :overflow_paginations
 
   def index
-    content = params.except(:action,:controller).values.any? ? Site.all : Site.order_by_last_visit("asc")
+    content = params.except(:action,:controller).values.any? ? Site : Site.order_by_last_visit("asc")
     @pagy, @sites = pagy(apply_scopes(content), size: [1,3,3,1])
     @query = params
   end

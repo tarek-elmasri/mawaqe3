@@ -1,34 +1,50 @@
-<h3>اضافة موقع</h3>
+<h3>البحث</h3>
 
-<div class='form-control'>
+<div class='m-3'>
 
-  <%= form_tag(sites_path, :method => "get", class: "form-control") do  %>
+  <%= form_with url: sites_path, method: "get", class: "form-control" do |form|  %>
 
-    <div class='m-3'>
-      <%= label_tag(:name_match, "الاسم", class: "form-label") %>
-      <%= text_field_tag(:name_match, class: "form-control" ) %>
+    <div class='m-3' style="max-width: 350px">
+      <%= form.label "الاسم", class: "form-label" %>
+      <%= form.text_field :name_match, class: "form-control"  %>
     </div>
 
-    <div class='m-3'>
-      <%= label_tag(:address_match, "الحي / البلدية", class: "form-label" ) %>
-      <%= text_field_tag(:address_match, class: "form-control") %>
+    <div class='m-3' style="max-width: 350px">
+      <%= form.label "الحي / البلدية", class: "form-label"  %>
+      <%= form.text_field :address_match, class: "form-control" %>
     </div>
 
-    <div class="">
-      <div class='m-3'>
-        اخر زيارة
-      </div>
-
-      <div class='m-3 mr-3'>
-        <%= label_tag(:last_visit_between, "من", class: "form-label") %>
-        <%= date_field_tag("last_visit_between[start_date]", class: "form-control") %>
-        <%= label_tag(:last_visit_between, "الى", class: "form-label") %>
-        <%= date_field_tag("last_visit_between[end_date]", class: "form-control") %>
+    <div class="m-3">
+        اخر زيارة:
+      <div class='mx-3' style="max-width: 200px">
+        <%= form.label "من", class: "form-label" %>
+        <%= form.date_field "last_visit_between[start_date]", class: "form-control" %>
+        <%= form.label "الى", class: "form-label" %>
+        <%= form.date_field "last_visit_between[end_date]", class: "form-control" %>
       </div>
     <div>
 
+    <div class="my-4">
+      ترتيب حسب تاريخ اخر زيارة
+      <div class="mx-3" style="max-width: 200px">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="order_by_last_visit" id="order_by_last_visit1" value="asc" checked>
+          <label class="form-check-label" for="order_by_last_visit1">
+            من الاقدم للأحدث
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="order_by_last_visit" id="order_by_last_visit2" value="desc">
+          <label class="form-check-label" for="order_by_last_visit2">
+            من الأحدث للأقدم
+          </label>
+        </div>
+
+      </div>
+    </div>
+
     <div class='m-3 mb-3'> 
-      <%= submit_tag("بحث", class: 'btn btn-primary btn-sm') %>
+      <%= form.submit "بحث", class: 'btn btn-success btn-sm' %>
       <%= link_to "عودة", root_path , class: 'btn btn-primary btn-sm' %>
     </div>
 
