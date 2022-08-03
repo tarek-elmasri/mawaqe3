@@ -2,7 +2,7 @@ class SitesController < ApplicationController
   include SitesHelper
   include Pagy::Backend
 
-  before_action :set_site , except: [:new, :indexو :create]
+  before_action :set_site , except: [:new, :index, :create]
   has_scope :order_by_last_visit
   has_scope :past_15, type: :boolean
   has_scope :past_30, type: :boolean
