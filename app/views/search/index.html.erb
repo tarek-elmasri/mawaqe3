@@ -1,0 +1,38 @@
+<h3>اضافة موقع</h3>
+
+<div class='form-control'>
+
+  <%= form_tag(sites_path, :method => "get", class: "form-control") do  %>
+
+    <div class='m-3'>
+      <%= label_tag(:name_match, "الاسم", class: "form-label") %>
+      <%= text_field_tag(:name_match, class: "form-control" ) %>
+    </div>
+
+    <div class='m-3'>
+      <%= label_tag(:address_match, "الحي / البلدية", class: "form-label" ) %>
+      <%= text_field_tag(:address_match, class: "form-control") %>
+    </div>
+
+    <div class="">
+      <div class='m-3'>
+        اخر زيارة
+      </div>
+
+      <div class='m-3 mr-3'>
+        <%= label_tag(:last_visit_between, "من", class: "form-label") %>
+        <%= date_field_tag("last_visit_between[start_date]", class: "form-control") %>
+        <%= label_tag(:last_visit_between, "الى", class: "form-label") %>
+        <%= date_field_tag("last_visit_between[end_date]", class: "form-control") %>
+      </div>
+    <div>
+
+    <div class='m-3 mb-3'> 
+      <%= submit_tag("بحث", class: 'btn btn-primary btn-sm') %>
+      <%= link_to "عودة", root_path , class: 'btn btn-primary btn-sm' %>
+    </div>
+
+
+  <%end%>
+
+</div>

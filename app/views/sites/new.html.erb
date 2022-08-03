@@ -1,0 +1,41 @@
+<h3>اضافة موقع</h3>
+
+<div class='form-control'>
+
+  <%= form_for @site , url: sites_path do  |form| %>
+    <% if @site.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <% @site.errors.messages.each do |_, value| %>
+          <% value.each do |msg| %>
+            <div><%= '* ' + msg %></div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class='m-3'>
+      <%= form.label "اسم الموقع", class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class='m-3'>
+      <%= form.label "الحي / البلدية", class: 'form-label' %>
+      <%= form.text_field :address, class: 'form-control' %>
+    </div>
+
+
+    <div class='m-3'>
+      <%= form.label "تاريخ اخر زيارة", class: 'form-label' %>
+      <%= form.date_field :last_visit  %>
+    </div>
+
+    <div class='m-3 mb-3'> 
+
+      <%= form.submit 'حفظ', class: 'btn btn-success' %>
+      <%= link_to "عودة", root_path , class: 'btn btn-primary' %>
+    </div>
+
+
+  <%end%>
+
+</div>
