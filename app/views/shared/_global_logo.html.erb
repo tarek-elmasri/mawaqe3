@@ -1,0 +1,13 @@
+<div class='row justify-content-center align-items-center mt-3'>
+  <div class='col'>
+    <div class='text-center'>
+      <div><%= image_tag "logo2.jpg", class: 'img-fluid border'   %></div>
+      <div><%= image_tag "logo1.jpg", class: 'img-fluid border'   %></div>
+    </div>
+  </div>
+</div> 
+
+
+<div class='text-center pt-3'>
+  <%= link_to "تسجيل الخروح" , logout_path(@current_user.id) ,method: :delete , class: 'btn btn-sm btn-danger' if @current_user %>
+</div>

@@ -1,11 +1,15 @@
 <h1>
   المواقع
 </h1>
-
 <hr>
+<small class='mx-3 text-black fw-bold bg-success bg-opacity-50'>* مواقع لم يمر على اخر زيارة اكثر من 15 يوم .</small><br>
+<small class='mx-3 text-black fw-bold bg-primary bg-opacity-50'>* مواقع مر على اخر زيارة لها اكثر من 15 يوم .</small><br>
+<small class='mx-3 text-black fw-bold bg-warning bg-opacity-50'>* مواقع مر على اخر زيارة لها اكثر من 30 يوم .</small><br>
+<small class='mx-3 text-black fw-bold bg-danger bg-opacity-50'>* مواقع مر على اخر زيارة لها اكثر من 45 يوم .</small><br>
 <div class='m-3'>
   <%= link_to "اضافة موقع", new_site_path, class: 'btn btn-sm btn-success' %>
   <%= link_to "بحث متقدم", search_path, class: 'btn btn-sm btn-primary' %>
+  <%= link_to "عرض الكل", sites_path, class: 'btn btn-sm btn-secondary' %>
 </div>
 
 <%= render partial: 'shared/pagy_nav', locals: {pagy: @pagy} %>

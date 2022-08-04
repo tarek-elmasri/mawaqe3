@@ -2,7 +2,9 @@ class SitesController < ApplicationController
   include SitesHelper
   include Pagy::Backend
 
+  before_action :authenticate_user
   before_action :set_site , except: [:new, :index, :create]
+  
   has_scope :order_by_last_visit
   has_scope :past_15, type: :boolean
   has_scope :past_30, type: :boolean
@@ -32,7 +34,7 @@ class SitesController < ApplicationController
 
   def update
     if @site.update(sites_params)
-      redirect_to root_path, notice: "تم تحديث بيانات الموقع بنجاح"
+      redirect_to sites_path, notice: "تم تحديث بيانات الموقع بنجاح"
     else
       render :edit
     end
@@ -44,7 +46,7 @@ class SitesController < ApplicationController
   def create
     @site = Site.new(sites_params)
     if @site.save
-      redirect_to root_path, notice: "تم اضافة الموقع بنجاح"
+      redirect_to sites_path, notice: "تم اضافة الموقع بنجاح"
     else
       render :new
     end

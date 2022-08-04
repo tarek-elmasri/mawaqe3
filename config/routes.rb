@@ -7,4 +7,8 @@ Rails.application.routes.draw do
 
   get "search" => "search#index", as: :search
 
+  get "sessions" => "sessions#index", as: :login
+  post "sessions" => "sessions#create", as: :create_new_session
+  delete "sessions" => "sessions#destroy", as: :logout
+  
 end

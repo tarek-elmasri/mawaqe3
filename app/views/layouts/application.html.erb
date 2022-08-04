@@ -11,12 +11,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="app-bg">
     <div class='container-fluid'>
+      
+      <%= render partial: 'shared/global_logo' %>
+
+      <%= render partial: "shared/flash" %>
       
       <div class='p-6 mt-5'>
         <div>
-          <%= render partial: "shared/flash" %>
         </div>
         <%= yield %>
       </div>
